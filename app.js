@@ -2,6 +2,7 @@ const Koa = require('koa')
 const bodyparser = require('koa-bodyparser')
 const HomeRouter = require('./routers/home.router')
 const PostRouter  = require('./routers/post.routes');
+const cors = require('@koa/cors');
 
 const client =require('./dal')
 
@@ -10,6 +11,7 @@ const app = new Koa();
 
 //using koa body parser
 app.use(bodyparser() );
+app.use(cors());
 
 app.use(HomeRouter.routes())
     .use(HomeRouter.allowedMethods());
